@@ -1,0 +1,29 @@
+getName
+
+1. Takes entered store name and saves it to variable $store_name.
+Input: "Nike Outlet";
+Output: $store_name;
+
+getId
+
+2. Takes entered store name and assigns it with an id value.
+
+Input: "Nike Outlet";
+Id: 1;
+Output: id = 1;
+
+save
+
+3. Saves entered store name to the database.
+
+Input: "Nike Outlet";
+Output: new Store("Nike Outlet"), $test_store
+
+getAll
+
+4. Takes multiple inputs and saves them to the database using save, finds them
+   with the getAll method.
+
+Input1: "Nike Outlet";
+Input2: "Journey's";
+Output: $test_store1, $test_store2;
