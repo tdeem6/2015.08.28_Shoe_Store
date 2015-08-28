@@ -13,8 +13,13 @@ Allows user to enter a list of local shoe stores.  Also allows user to add multi
 1. Clone this repository using the command `git clone [link-to-your-repository]`.
 2. Change directory into the top level of the project folder.
 3. Install Composer (https://getcomposer.org) and then run the command `composer install` to download the Silex and Twig vendor files.
-4. Change directory into the `web` folder and start your server. For example, using PHP’s built-in server: `php -S localhost:8000`
-4. Navigate your browser to the home page at the root address. For example: `http://localhost:8000`.
+4. Setup mySql database. For how to use MAMP:
+   :Enter $ /Applications/MAMP/Library/bin/mysql --host=localhost -uroot -proot
+   :Run servers in MAMP
+   :Go to phpMyAdmin
+   :Import shoe_store.sql and shoe_store_test.sql from project folder in Github.
+5. Change directory into the `web` folder and start your server. For example, using PHP’s built-in server: `php -S localhost:8000`
+6. Navigate your browser to the home page at the root address. For example: `http://localhost:8000`.
 
 ## Technologies Used
 

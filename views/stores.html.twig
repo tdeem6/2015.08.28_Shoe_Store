@@ -8,13 +8,13 @@
             <h1>Find your shoes</h1>
 
             <div class="panel panel-default">
-                <div class="panel-heading">{{ store.getName }} has the following shoe brands:
+                <div class="panel-heading">{{ store.getStoreName }} has the following shoe brands:
                 </div>
                 <div class="panel-body">
                     {% if brands is not empty %}
                         <ul>
                             {% for brand in brands %}
-                                <li><a href='/brands/{{ brand.getId }}'>{{ brand.getName }}</a></li>
+                                <li><a href='/brands/{{ brand.getId }}'>{{ brand.getBrandName }}</a></li>
                             {% endfor %}
                         </ul>
                     {% else %}
@@ -29,7 +29,7 @@
                             <label for='brand_id'>Enter a  shoe brand</label>
                             <select id='brand_id' name='brand_id' type='text'>
                                 {% for brand in all_brands %}
-                                    <option value='{{ brand.getId }}'>{{ brand.getName }}</option>
+                                    <option value='{{ brand.getId }}'>{{ brand.getBrandName }}</option>
                                 {% endfor %}
                             </select>
                         </div>

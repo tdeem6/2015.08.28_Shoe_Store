@@ -29,7 +29,7 @@
 
         function save()
         {
-            $GLOBALS['DB']->exec("INSERT INTO  brands (brand_name, store_id) VALUES ('{$this->getBrandName()}', {$this->getStoreId()});");
+            $GLOBALS['DB']->exec("INSERT INTO  brands (brand_name, store_id) VALUES ('{$this->getBrandName()}';");
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 

@@ -11,7 +11,7 @@
                     {% if stores is not empty %}
                         <ul>
                             {% for store in stores %}
-                                <li><a href='/stores/{{ store.getId }}'>{{ store.getName }}</a></li>
+                                <li><a href='/stores/{{ store.getId }}'>{{ store.getStoreName }}</a></li>
                             {% endfor %}
                         </ul>
                     {% else %}
@@ -31,13 +31,13 @@
                     </form>
                 </div>
 
-            </div>
+        </div>
 
                 <div class="container">
                     {% if brands is not empty %}
                         <ul>
                             {% for brand in brands %}
-                                <li><a href='/brands/{{ brand.getId }}'>{{ brand.getName }}</a></li>
+                                <li><a href='/brands/{{ brand.getId }}'>{{ brand.getBrandName }}</a></li>
                             {% endfor %}
                         </ul>
                     {% else %}

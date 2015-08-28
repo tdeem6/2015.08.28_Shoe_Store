@@ -92,8 +92,8 @@
             $test_store->save();
 
             $store_name2 = "Prada";
-            $id2 = null;
-            $test_store2 = new Store($store_name2, $id2);
+            // $id2 = null;
+            $test_store2 = new Store($store_name2, $id);
             $test_store->save();
 
             //Act
@@ -113,8 +113,8 @@
             $test_store->save();
 
             $store_name2 = "Prada";
-            $id2 = null;
-            $test_store2 = new Store($store_name2, $id2);
+            // $id2 = null;
+            $test_store2 = new Store($store_name2, $id);
             $test_store->save();
 
             //Act
@@ -171,7 +171,7 @@
             $test_store = new Store($store_name, $id);
             $test_store->save();
 
-            $test_store_id = $test_store->getId();
+            // $test_store_id = $test_store->getId();
 
             $brand_name = "Nike";
             $test_brand = new Brand($brand_name, $id);

@@ -31,7 +31,7 @@
         $new_store = new Store($store_name, $id);
         $new_store->save();
         return $app['twig']->render('index.html.twig', array('stores' => Store::getAll(), 'brands' => Brand::getAll()));
-    })
+    });
 
     $app->post('/delete_stores', function() use ($app) {
         Store::deleteAll();
