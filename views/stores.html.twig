@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
+        <title>Find where your Favorite Shoes are.</title>
+    </head>
+    <body>
+        <div class='container'>
+            <h1>Find your shoes</h1>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">{{ store.getName }} has the following shoe brands:
+                </div>
+                <div class="panel-body">
+                    {% if brands is not empty %}
+                        <ul>
+                            {% for brand in brands %}
+                                <li><a href='/brands/{{ brand.getId }}'>{{ brand.getName }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>No luck padre</p>
+                    {% endif %}
+                </div>
+
+                <div class="container">
+                    <form action='/add_brands' method='post'>
+                        <div class='form-group'>
+                            <input id='store_id' name='store_id' type='hidden' value='{{ store.getId }}'>
+                            <label for='brand_id'>Enter a  shoe brand</label>
+                            <select id='brand_id' name='brand_id' type='text'>
+                                {% for brand in all_brands %}
+                                    <option value='{{ brand.getId }}'>{{ brand.getName }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <button type='submit' class='btn btn-primary'>Add shoe brand</button>
+                    </form>
+                    <p>Edit this <a href='/store/{{ store.getId }}'>store</a>.</p>
+                    <p><a href='/'>home</a>.</p>
+                </div>
+        </div>
+    </body>
+</html>

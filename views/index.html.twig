@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
+        <title>Shoe Stores and Brands</title>
+    </head>
+    <body>
+        <div class='container'>
+            <h1>Find the Brands you want at the Stores you Like.</h1>
+
+                <div class="container">
+                    {% if stores is not empty %}
+                        <ul>
+                            {% for store in stores %}
+                                <li><a href='/stores/{{ store.getId }}'>{{ store.getName }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>No stores entered.</p>
+                    {% endif %}
+                </div>
+
+                <div class="container">
+                    <form action='/add_store' method='post'>
+                        <div class='form-group'>
+                            <input type='text' id='store_name' name='store_name' class='form-control' placeholder='Add a shoe store'>
+                        </div>
+                        <button type='submit' class='btn btn-primary'>Add store</button>
+                    </form>
+                    <form action='/delete_stores' method='post'>
+                        <button type='submit' class='btn btn-danger'>Erase stores</button>
+                    </form>
+                </div>
+
+            </div>
+
+                <div class="container">
+                    {% if brands is not empty %}
+                        <ul>
+                            {% for brand in brands %}
+                                <li><a href='/brands/{{ brand.getId }}'>{{ brand.getName }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>No brands entered.</p>
+                    {% endif %}
+                </div>
+                <div class="container">
+                    <form action='/add_brand' method='post'>
+                        <div class='form-group'>
+                            <input type='text' id='brand_name' name='brand_name' class='form-control' placeholder='Add a shoe brand'>
+                        </div>
+                        <button type='submit' class='btn btn-primary'>Add brand</button>
+                    </form>
+                    <form action='/delete_brands' method='post'>
+                        <button type='submit' class='btn btn-danger'>Clear brands</button>
+                    </form>
+
+                </div>
+    </body>
+</html>

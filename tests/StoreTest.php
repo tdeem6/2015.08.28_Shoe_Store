@@ -8,7 +8,7 @@
     require_once "src/Brand.php";
     require_once "src/Store.php";
 
-    $server = 'mysql:host=localhost;dbname=shoe_store';
+    $server = 'mysql:host=localhost;dbname=shoe_store_test';
     $username = 'root';
     $password = 'root';
     $DB = new PDO($server, $username, $password);
@@ -21,18 +21,18 @@
             Store::deleteAll();
         }
 
-        function test_getStoreName()
-        {
-            //Arrange
-            $store_name = "Nike Outlet";
-            $test_store = new Store($store_name);
-
-            //Act
-            $result = $test_store->getStoreName();
-
-            //Assert
-            $this->assertEquals($store_name, $result);
-        }
+        // function test_getStoreName()
+        // {
+        //     //Arrange
+        //     $store_name = "Nike Outlet";
+        //     $test_store = new Store($store_name);
+        //
+        //     //Act
+        //     $result = $test_store->getStoreName();
+        //
+        //     //Assert
+        //     $this->assertEquals($store_name, $result);
+        // }
 
         function test_getId()
         {
@@ -166,12 +166,12 @@
         function testGetBrands()
         {
             //Arrange
-            // $store_name = "Nike Outlet";
-            // $id = null;
-            // $test_store = new Store($store_name, $id);
-            // $test_store->save();
+            $store_name = "Nike Outlet";
+            $id = null;
+            $test_store = new Store($store_name, $id);
+            $test_store->save();
 
-            // $test_store_id = $test_store->getId();
+            $test_store_id = $test_store->getId();
 
             $brand_name = "Nike";
             $test_brand = new Brand($brand_name, $id);
@@ -190,6 +190,26 @@
 
             //Assert
             $this->assertEquals([$test_brand, $test_brand2], $result);
+        }
+
+        function testAddBrand()
+        {
+            //Arrange
+            $store_name = "Nike Outlet";
+            $id = null;
+            $test_store = new Store($store_name, $id);
+            $test_store->save();
+
+            $brand_name = "Nike";
+            $test_brand = new Brand($brand_name, $id);
+            $test_brand->save();
+
+            //Act
+            $test_store->addBrand($test_brand);
+
+            //Assert
+            $result = $test_store->getBrands();
+            $this->assertEquals([$test_brand], $result);
         }
     }
 ?>

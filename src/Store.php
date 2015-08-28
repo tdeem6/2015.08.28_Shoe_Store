@@ -77,11 +77,9 @@
                JOIN brands ON (stores_brands.brand_id = brands.id) WHERE stores.id = {$this->getId()};");
 
             $brands = array();
-            // $returned_brands = $GLOBALS['DB']->query("SELECT * FROM brands WHERE store_id = {$this->getId()};");
             foreach($query as $brand) {
                 $brand_name = $brand['brand_name'];
                 $id = $brand['id'];
-                // $store_id = $brand['store_id'];
                 $new_brand = new Brand($brand_name, $id);
                 array_push($brands, $new_brand);
             }

@@ -5,18 +5,16 @@
 
         private $brand_name;
         private $id;
-        private $store_id;
 
-        function __construct($brand_name, $id = null)
+        function __construct($brand_name, $id)
         {
             $this->brand_name = $brand_name;
             $this->id = $id;
-            // $this->store_id = $store_id;
         }
 
         function setBrandName($new_brand_name)
         {
-            $this->brand_name = (string) $new_brand_name;
+            $this->brand_name = $new_brand_name;
         }
 
         function getBrandName()
@@ -27,11 +25,6 @@
         function getId()
         {
             return $this->id;
-        }
-
-        function getStoreId()
-        {
-            return $this->store_id;
         }
 
         function save()
@@ -47,7 +40,6 @@
             foreach($returned_brands as $brand) {
                 $brand_name = $brand['brand_name'];
                 $id = $brand['id'];
-                $store_id = $brand['brand_id'];
                 $new_brand = new Brand($brand_name, $id, $store_id);
                 array_push($brands, $new_brand);
             }
@@ -57,6 +49,7 @@
         static function deleteAll()
         {
             $GLOBALS['DB']->exec("DELETE FROM brands;");
+            $GLOBALS['DB']->exec("DELETE FROM stores_brands;");
         }
 
         static function find($search_id)
@@ -82,6 +75,27 @@
         {
             $GLOBALS['DB']->exec("DELETE FROM stores WHERE id = {$this->getId()};");
             $GLOBALS['DB']->exec("DELETE FROM brands WHERE store_id = {$this->getId()};");
+        }
+
+        function addStore($new_store)
+        {
+            $GLOBALS['DB']->exec("INSERT INTO stores_brands (store_id, brand_id) VALUES ({$new_store->getId()}, {$this->getId()});");
+        }
+
+        function getStores()
+        {
+            $query = $GLOBALS['DB']->query("SELECT stores.* FROM brands JOIN stores_brands ON (brands.id = stores_brands.brand_id)
+                                            JOIN stores ON (stores_brands.store_id = stores.id)
+                                            WHERE brands.id = {$this->getId()};
+                                            ");
+            $stores = array();
+            foreach ($query as $store) {
+                $store_name = $store['store_name'];
+                $id = $store['id'];
+                $new_store = new Store($store_name, $id);
+                array_push($stores, $new_store);
+            }
+            return $stores;
         }
     }
 ?>
