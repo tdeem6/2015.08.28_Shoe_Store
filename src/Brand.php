@@ -7,11 +7,11 @@
         private $id;
         private $store_id;
 
-        function __construct($brand_name, $id = null, $store_id)
+        function __construct($brand_name, $id = null)
         {
             $this->brand_name = $brand_name;
             $this->id = $id;
-            $this->store_id = $store_id;
+            // $this->store_id = $store_id;
         }
 
         function setBrandName($new_brand_name)
