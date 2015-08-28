@@ -8,6 +8,10 @@
 
 Allows user to enter a list of local shoe stores.  Also allows user to add multiple shoe brand names to a particular shoe store.
 
+##Disclaimer
+
+Has errors in tests, made twig templates that have a few broken links. Ran out of time debugging tests, will need to resubmit this weekend.
+
 ##Setup
 
 1. Clone this repository using the command `git clone [link-to-your-repository]`.
