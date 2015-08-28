@@ -64,6 +64,20 @@
             return $found_store;
         }
 
+        function getBrands()
+        {
+            $brands = Array();
+            $returned_brands = $GLOBALS['DB']->query("SELECT * FROM brands WHERE store_id = {$this->getId()};");
+            foreach($returned_brands as $brand) {
+                $brand_name = $brand['brand_name'];
+                $id = $brand['id'];
+                $store_id = $brand['store_id'];
+                $new_brand = new Brand($brand_name, $id, $store_id);
+                array_push($brands, $new_brand);
+            }
+            return $brands;
+        }
+
         function update($new_store_name)
         {
             $GLOBALS['DB']->exec("UPDATE stores SET name = '{$new_store_name}' WHERE id = {$this->getId()};");
