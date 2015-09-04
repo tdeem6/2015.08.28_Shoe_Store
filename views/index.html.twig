@@ -7,7 +7,10 @@
         <div class='container'>
             <h1>Find the Brands you want at the Stores you Like.</h1>
 
-                <div class="container">
+                <div class="left panel panel-default">
+                  <div class="panel-heading">Search Store:
+                  </div>
+                  <div class="panel-body">
                     {% if stores is not empty %}
                         <ul>
                             {% for store in stores %}
@@ -19,7 +22,7 @@
                     {% endif %}
                 </div>
 
-                <div class="container">
+                <div class="panel-footer">
                     <form action='/add_store' method='post'>
                         <div class='form-group'>
                             <input type='text' id='store_name' name='store_name' class='form-control' placeholder='Add a shoe store'>
@@ -33,7 +36,10 @@
 
         </div>
 
-                <div class="container">
+                <div class="right panel panel-default">
+                  <div class="panel-heading">Search Brands:
+                  </div>
+                  <div class="panel-body">
                     {% if brands is not empty %}
                         <ul>
                             {% for brand in brands %}
@@ -44,7 +50,7 @@
                         <p>No brands entered.</p>
                     {% endif %}
                 </div>
-                <div class="container">
+                <div class="panel-footer">
                     <form action='/add_brand' method='post'>
                         <div class='form-group'>
                             <input type='text' id='brand_name' name='brand_name' class='form-control' placeholder='Add a shoe brand'>

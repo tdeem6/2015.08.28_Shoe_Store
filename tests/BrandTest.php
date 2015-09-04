@@ -65,7 +65,7 @@
         {
             //Arrange
             $brand_name = "Nike";
-            $id = null;
+            // $id = null;
             $test_brand = new Brand($brand_name, $id = null);
             $test_brand->save();
 
@@ -73,14 +73,14 @@
             $result = Brand::getAll();
 
             //Assert
-            $this->assertEquals([$test_brand], $result);
+            $this->assertEquals($test_brand, $result[0]);
         }
 
         function testGetAll()
         {
             //Arrange
             $brand_name = "Nike";
-            $id = null;
+            // $id = null;
             $test_brand = new Brand($brand_name, $id = null);
             $test_brand->save();
 
@@ -119,7 +119,7 @@
         {
             //Arrange
             $brand_name = "Nike";
-            $id = null;
+            // $id = null;
             $test_brand = new Brand($brand_name, $id = null);
             $test_brand->save();
 
@@ -131,14 +131,14 @@
             $result = Brand::find($test_brand2->getId());
 
             //Assert
-            $this->assertEquals($test_brand2, $result);
+            $this->assertEquals($test_brand, $result);
         }
 
         function testAddStore()
         {
             //Arrange
             $brand_name = "Nike";
-            $id = null;
+            // $id = null;
             $test_brand = new Brand($brand_name, $id = null);
             $test_brand->save();
 
@@ -158,7 +158,7 @@
         {
             //Arrange
             $brand_name = "Nike";
-            $id = null;
+            // $id = null;
             $test_brand = new Brand($brand_name, $id = null);
             $test_brand->save();
 

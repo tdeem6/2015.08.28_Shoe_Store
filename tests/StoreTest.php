@@ -55,7 +55,7 @@
             $store_name = "Nike Outlet";
             $id = 1;
             $test_store = new Store($store_name, $id);
-            $test_store->save();
+            // $test_store->save();
 
             //Act
             $result = $test_store->getId();
@@ -224,11 +224,12 @@
             $test_store->addBrand($test_brand);
             $test_store->addBrand($test_brand2);
 
-            //Act
-            $result = $test_store->getBrands();
-
-            //Assert
-            $this->assertEquals([$test_brand, $test_brand2], $result);
+            // //Act
+            // $result = $test_store->getBrands();
+            //
+            // //Assert
+            // $this->assertEquals([$test_brand, $test_brand2], $result);
+            $this->assertEquals($test_store->getBrands(), [$test_brand, $test_brand2]);
         }
 
         function testAddBrand()
@@ -248,8 +249,9 @@
             $test_store->addBrand($test_brand);
 
             //Assert
-            $result = $test_store->getBrands();
-            $this->assertEquals([$test_brand], $result);
+            // $result = $test_store->getBrands();
+            // $this->assertEquals([$test_brand], $result);
+            $this->assertEquals($test_store->getBrands(), [$test_brand]);
         }
     }
 ?>

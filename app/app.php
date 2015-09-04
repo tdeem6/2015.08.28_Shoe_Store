@@ -69,7 +69,7 @@
 
     $app->get('/store/{id}', function($id) use ($app) {
         $store = Store::find($id);
-        return $app['twig']->render('store_edit.html.twig', array('store' => $store));
+        return $app['twig']->render('stores_edit.html.twig', array('store' => $store));
     });
 
     $app->patch('/stores/{id}', function($id) use ($app) {
