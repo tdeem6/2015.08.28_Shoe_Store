@@ -6,9 +6,9 @@
 
     $app = new Silex\Application();
 
-    $app['debug'] = true;
+    // $app['debug'] = true;
 
-    $server = 'mysql:host=localhost;dbname=shoe_store';
+    $server = 'mysql:host=localhost;dbname=shoes';
     $username = 'root';
     $password = 'root';
     $DB = new PDO($server, $username, $password);
