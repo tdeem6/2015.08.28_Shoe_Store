@@ -20,18 +20,59 @@
             Store::deleteAll();
         }
 
+        function testGetBrandName()
+        {
+          //Arrange
+          $brand_name = "Nike";
+          $test_brand = new Brand($brand_name);
+
+          //Act
+          $result = $test_brand->getBrandName();
+
+          //Assert
+          $this->assertEquals($brand_name, $result);
+        }
+
+        function testSetBrandName()
+        {
+            //Arrange
+            $brand_name = "Nike";
+            $test_brand = new Brand($brand_name);
+
+            //Act
+            $test_brand->setBrandName($brand_name);
+            $result = $test_brand->getBrandName();
+
+            //Assert
+            $this->assertEquals($brand_name, $result);
+        }
+
+        function testGetId()
+        {
+            //Arrange
+            $id = 1;
+            $brand_name = "Nike";
+            $test_brand = new Brand($brand_name, $id);
+
+            //Act
+            $result = $test_brand->getId();
+
+            //Assert
+            $this->assertEquals(1, $result);
+        }
+
         function testSave()
         {
             //Arrange
             $brand_name = "Nike";
             $id = null;
-            $test_brand = new Brand($brand_name, $id);
-
-            //Act
+            $test_brand = new Brand($brand_name, $id = null);
             $test_brand->save();
 
-            //Assert
+            //Act
             $result = Brand::getAll();
+
+            //Assert
             $this->assertEquals([$test_brand], $result);
         }
 
@@ -40,11 +81,11 @@
             //Arrange
             $brand_name = "Nike";
             $id = null;
-            $test_brand = new Brand($brand_name, $id);
+            $test_brand = new Brand($brand_name, $id = null);
             $test_brand->save();
 
             $brand_name2 = "Puma";
-            $test_brand2 = new Brand($brand_name2, $id);
+            $test_brand2 = new Brand($brand_name2, $id = null);
             $test_brand2->save();
 
             //Act
@@ -59,11 +100,11 @@
             //Arrange
             $brand_name = "Nike";
             $id = null;
-            $test_brand = new Brand($brand_name, $id);
+            $test_brand = new Brand($brand_name, $id = null);
             $test_brand->save();
 
             $brand_name2 = "Puma";
-            $test_brand2 = new Brand($brand_name2, $id);
+            $test_brand2 = new Brand($brand_name2, $id = null);
             $test_brand2->save();
 
             //Act
@@ -79,11 +120,11 @@
             //Arrange
             $brand_name = "Nike";
             $id = null;
-            $test_brand = new Brand($brand_name, $id);
+            $test_brand = new Brand($brand_name, $id = null);
             $test_brand->save();
 
             $brand_name2 = "Puma";
-            $test_brand2 = new Brand($brand_name2, $id);
+            $test_brand2 = new Brand($brand_name2, $id = null);
             $test_brand2->save();
 
             //Act
@@ -98,11 +139,11 @@
             //Arrange
             $brand_name = "Nike";
             $id = null;
-            $test_brand = new Brand($brand_name, $id);
+            $test_brand = new Brand($brand_name, $id = null);
             $test_brand->save();
 
             $store_name = "Nike Outlet";
-            $test_store = new Store($store_name, $id);
+            $test_store = new Store($store_name, $id = null);
             $test_store->save();
 
             //Act
@@ -118,15 +159,15 @@
             //Arrange
             $brand_name = "Nike";
             $id = null;
-            $test_brand = new Brand($brand_name, $id);
+            $test_brand = new Brand($brand_name, $id = null);
             $test_brand->save();
 
             $store_name = "Nike Outlet";
-            $test_store = new Store($store_name, $id);
+            $test_store = new Store($store_name, $id = null);
             $test_store->save();
 
             $store_name2 = "Prada";
-            $test_store2 = new Store($store_name2, $id);
+            $test_store2 = new Store($store_name2, $id = null);
             $test_store2->save();
 
             $test_brand->addStore($test_store);

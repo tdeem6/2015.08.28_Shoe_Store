@@ -21,18 +21,33 @@
             Store::deleteAll();
         }
 
-        // function test_getStoreName()
-        // {
-        //     //Arrange
-        //     $store_name = "Nike Outlet";
-        //     $test_store = new Store($store_name);
-        //
-        //     //Act
-        //     $result = $test_store->getStoreName();
-        //
-        //     //Assert
-        //     $this->assertEquals($store_name, $result);
-        // }
+        function testGetStoreName()
+        {
+            //Arrange
+            $store_name = "Payless";
+            $test_store = new Store($store_name);
+
+            //Act
+            $result = $test_store->getStoreName();
+
+            //Assert
+            $this->assertEquals($store_name, $result);
+
+        }
+
+        function testSetStoreName()
+        {
+            //Arrange
+            $store_name = "Payless";
+            $test_store = new Store($store_name);
+
+            //Act
+            $test_store->setStoreName($store_name);
+            $result = $test_store->getStoreName();
+
+            //Assert
+            $this->assertEquals($store_name, $result);
+        }
 
         function test_getId()
         {
@@ -46,15 +61,15 @@
             $result = $test_store->getId();
 
             //Assert
-            $this->assertEquals(true, is_numeric($result));
+            $this->assertEquals(1, $result);
         }
 
         function test_save()
         {
             //Arrange
             $store_name = "Nike Outlet";
-            $id = 1;
-            $test_store = new Store($store_name, $id);
+            // $id = 1;
+            $test_store = new Store($store_name, $id = null);
             $test_store->save();
 
             //Act
@@ -68,12 +83,12 @@
         {
             //Arrange
             $store_name = "Nike Outlet";
-            $id = 1;
+            // $id = 1;
             $store_name2 = "Prada";
-            $id2 = 2;
-            $test_store = new Store($store_name, $id);
+            // $id2 = 2;
+            $test_store = new Store($store_name, $id = null);
             $test_store->save();
-            $test_store2 = new Store($store_name2, $id2);
+            $test_store2 = new Store($store_name2, $id = null);
             $test_store2->save();
 
             //Act
@@ -83,18 +98,40 @@
             $this->assertEquals([$test_store, $test_store2], $result);
         }
 
+        function testDelete()
+        {
+            //Arrange
+            $store_name = "Payless";
+            $id = 1;
+            $test_store = new Store($store_name, $id);
+            $test_store->save();
+
+            $brand_name = "Nike";
+            $id2 = 2;
+            $test_brand = new Brand($brand_name, $id2);
+            $test_brand->save();
+
+            //Act
+            $test_store->addBrand($test_brand);
+            $test_store->delete();
+
+            //Assert
+            $result = $test_brand->getStores();
+            $this->assertEquals([], $result);
+        }
+
         function testDeleteAll()
         {
             //Arrange
             $store_name = "Nike Outlet";
-            $id = null;
+            $id = 1;
             $test_store = new Store($store_name, $id);
             $test_store->save();
 
             $store_name2 = "Prada";
-            // $id2 = null;
-            $test_store2 = new Store($store_name2, $id);
-            $test_store->save();
+            $id2 = 2;
+            $test_store2 = new Store($store_name2, $id2);
+            $test_store2->save();
 
             //Act
             Store::deleteAll();
@@ -108,13 +145,13 @@
         {
             //Arrange
             $store_name = "Nike Outlet";
-            $id = null;
+            $id = 1;
             $test_store = new Store($store_name, $id);
             $test_store->save();
 
             $store_name2 = "Prada";
-            // $id2 = null;
-            $test_store2 = new Store($store_name2, $id);
+            $id2 = 2;
+            $test_store2 = new Store($store_name2, $id2);
             $test_store->save();
 
             //Act
@@ -128,7 +165,7 @@
         {
             //Arrange
             $store_name = "Nike Outlet";
-            $id = null;
+            $id = 1;
             $test_store = new Store($store_name, $id);
             $test_store->save();
 
@@ -146,13 +183,13 @@
         {
             //Arrange
             $store_name = "Nike Outlet";
-            $id = null;
+            $id = 1;
             $test_store = new Store($store_name, $id);
             $test_store->save();
 
             $store_name2 = "Prada";
-            // $id2 = null;
-            $test_store2 = new Store($store_name2, $id);
+            $id2 = 2;
+            $test_store2 = new Store($store_name2, $id2);
             $test_store2->save();
 
             //Act
@@ -167,19 +204,21 @@
         {
             //Arrange
             $store_name = "Nike Outlet";
-            $id = null;
+            $id = 1;
             $test_store = new Store($store_name, $id);
             $test_store->save();
 
             // $test_store_id = $test_store->getId();
 
             $brand_name = "Nike";
-            $test_brand = new Brand($brand_name, $id);
+            $id2 = 2;
+            $test_brand = new Brand($brand_name, $id2);
             $test_brand->save();
 
 
             $brand_name2 = "Converse";
-            $test_brand2 = new Brand($brand_name2, $id);
+            $id3 = 3;
+            $test_brand2 = new Brand($brand_name2, $id3);
             $test_brand2->save();
 
             $test_store->addBrand($test_brand);
@@ -196,12 +235,13 @@
         {
             //Arrange
             $store_name = "Nike Outlet";
-            $id = null;
+            $id = 1;
             $test_store = new Store($store_name, $id);
             $test_store->save();
 
             $brand_name = "Nike";
-            $test_brand = new Brand($brand_name, $id);
+            $id2 = 2;
+            $test_brand = new Brand($brand_name, $id2);
             $test_brand->save();
 
             //Act
